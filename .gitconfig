@@ -1,0 +1,27 @@
+[user]
+	name = Andy Smith
+	email = asmith@thorleyindustries.com
+[github]
+	user = AndySmith78
+[core]
+	excludesfile = /Users/andy/.gitignore_global
+[color]
+  ui = auto
+[alias]
+  co = checkout
+  bc = checkout -b
+	ci = commit
+	st = status
+  b = branch
+  di = diff
+  dc = diff --cached
+  aa = add -all
+  ruo = remote update origin
+  prm = pull --rebase origin master
+	hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
+	type = cat-file -t
+  dump = cat-file -p
+[merge]
+  tool = vimdiff
+[credential]
+	helper = osxkeychain
