@@ -2,10 +2,7 @@
 
 alias tmx="TERM=screen-256color-bce tmx"
 alias vi="mvim -v"
-alias sc='script/console'
-alias scd='script/console --debugger'
-alias ss='script/server'
-alias ssd='script/server --debugger'
+alias scr="screen"
 alias be='bundle exec'
 alias gst='git status'
 alias gl='git pull'
