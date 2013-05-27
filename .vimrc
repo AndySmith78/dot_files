@@ -9,8 +9,8 @@ set shiftwidth=2
 
 syntax on
 filetype plugin indent on
-colorscheme idlefingers
-
+set t_Co=256
+colorscheme grb256
 set guioptions-=T
 
 if has("gui_running")
