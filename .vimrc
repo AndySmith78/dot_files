@@ -1,5 +1,5 @@
 set runtimepath^=~/.vim/bundle/ctrlp.vim
-
+let mapleader = ','
 set hidden
 set number
 set expandtab
@@ -44,7 +44,23 @@ function Align()
     endif
 endfunction
 
+cnoremap %% <C-R>=expand('%:h').'/'<cr>
+map <leader>e :edit %%
+map <leader>v :view %%
+
+map <leader>gv :CtrlP app/views
+map <leader>gc :CtrlP app/controllers
+map <leader>gm :CtrlP app/models
+
 nmap <silent> <c-k> :wincmd k<CR>
 nmap <silent> <c-j> :wincmd j<CR>
 nmap <silent> <c-h> :wincmd h<CR>
 nmap <silent> <c-l> :wincmd l<CR>
+
+set winwidth=84
+" We have to have a winheight bigger than we want to set winminheight. But if
+" " we set winheight to be huge before winminheight, the winminheight set will
+" " fail.
+set winheight=5
+set winminheight=5
+set winheight=999
