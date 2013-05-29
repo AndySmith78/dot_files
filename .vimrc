@@ -8,6 +8,8 @@ set tabstop=2
 set sts=2
 set shiftwidth=2
 
+"switch between last 2 files
+nnoremap <leader><leader> <c-^>
 syntax on
 filetype plugin indent on
 set t_Co=256
