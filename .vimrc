@@ -1,5 +1,6 @@
-set runtimepath^=~/.vim/bundle/ctrlp.vim
 let mapleader = ','
+
+set runtimepath^=~/.vim/bundle/ctrlp.vim
 set hidden
 set number
 set expandtab
@@ -17,7 +18,6 @@ if has("gui_running")
   set guioptions=egmrt
 endif
 
-let g:CommandTMaxFiles=40000
 :set wildignore+=vendor/**
 :set wildignore+=public/images
 :set wildignore+=*.png
@@ -48,10 +48,12 @@ cnoremap %% <C-R>=expand('%:h').'/'<cr>
 map <leader>e :edit %%
 map <leader>v :view %%
 
+"set ctrl p to search in certain folders
 map <leader>gv :CtrlP app/views
 map <leader>gc :CtrlP app/controllers
 map <leader>gm :CtrlP app/models
 
+"use ctrl + k,j,h,l to navigate splits
 nmap <silent> <c-k> :wincmd k<CR>
 nmap <silent> <c-j> :wincmd j<CR>
 nmap <silent> <c-h> :wincmd h<CR>
