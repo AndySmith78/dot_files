@@ -25,6 +25,7 @@ endif
 :set wildignore+=*.png
 :set wildignore+=*.jpg
 :set wildignore+=*.gif
+:set statusline=%<%f\ (%{&ft})\ %-4(%m%)%=%-19(%3l,%02c%03V%)
 
 function HtmlEscape()
   silent s/&/\&amp;/eg
