@@ -7,7 +7,7 @@ set expandtab
 set tabstop=2
 set sts=2
 set shiftwidth=2
-
+set mouse=n
 "switch between last 2 files
 nnoremap <leader><leader> <c-^>
 syntax on
@@ -92,7 +92,7 @@ function! RunTestFile(...)
 
   " Run the tests for the
   " previously-marked file.
-  let in_spec_file = match(expand("%"), '_spec.rb$') != -1
+  let in_spec_file = match(expand("%"), '$') != -1
   if in_spec_file
     call SetTestFile()
   elseif
@@ -107,6 +107,14 @@ function! RunNearestTest()
   call RunTestFile(":" . spec_line_number)
 endfunction
 
+function! RunWip(...)
+  :w
+  :silent !echo;echo;echo;echo;echo
+  exec ":!bundle exec rspec -t @wip"
+endfunction
+
+"run feature file
+map <leader>f :call RunWip()<cr>
 "run spec for current file
 map <leader>t :call RunTestFile()<cr>
 "run spec for what is under cursor
