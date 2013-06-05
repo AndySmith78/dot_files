@@ -1,5 +1,13 @@
 let mapleader = ','
 
+if has("gui_running")
+  set guioptions=egmrt
+endif
+
+syntax on
+filetype plugin indent on
+colorscheme grb256
+
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 set hidden
 set number
@@ -8,17 +16,15 @@ set tabstop=2
 set sts=2
 set shiftwidth=2
 set mouse=n
-"switch between last 2 files
-nnoremap <leader><leader> <c-^>
-syntax on
-filetype plugin indent on
-set t_Co=256
-colorscheme grb256
 set guioptions-=T
-
-if has("gui_running")
-  set guioptions=egmrt
-endif
+set t_Co=256
+set winwidth=84
+" We have to have a winheight bigger than we want to set winminheight. But if
+" " we set winheight to be huge before winminheight, the winminheight set will
+" " fail.
+set winheight=5
+set winminheight=5
+set winheight=999
 
 :set wildignore+=vendor/**
 :set wildignore+=public/images
@@ -26,6 +32,30 @@ endif
 :set wildignore+=*.jpg
 :set wildignore+=*.gif
 :set statusline=%<%f\ (%{&ft})\ %-4(%m%)%=%-19(%3l,%02c%03V%)
+
+"switch between last 2 files
+nnoremap <leader><leader> <c-^>
+cnoremap %% <C-R>=expand('%:h').'/'<cr>
+
+map <leader>e :edit %%
+map <leader>v :view %%
+"set ctrl p to search in certain folders
+map <leader>gv :CtrlP app/views
+map <leader>gc :CtrlP app/controllers
+map <leader>gm :CtrlP app/models
+"run feature file
+map <leader>f :call RunWip()<cr>
+"run spec for current file
+map <leader>t :call RunTestFile()<cr>
+"run spec for what is under cursor
+map <leader>T :call RunNearestTest()<cr>
+"run spec for entire app
+map <leader>a :call RunTests('spec')<cr>
+"use ctrl + k,j,h,l to navigate splits
+nmap <silent> <c-k> :wincmd k<CR>
+nmap <silent> <c-j> :wincmd j<CR>
+nmap <silent> <c-h> :wincmd h<CR>
+nmap <silent> <c-l> :wincmd l<CR>
 
 function HtmlEscape()
   silent s/&/\&amp;/eg
@@ -46,31 +76,6 @@ function Align()
       call search(repeat('[^|]*|',column).'\s\{-\}'.repeat('.',position),'ce',line('.'))
     endif
 endfunction
-
-cnoremap %% <C-R>=expand('%:h').'/'<cr>
-map <leader>e :edit %%
-map <leader>v :view %%
-
-"set ctrl p to search in certain folders
-map <leader>gv :CtrlP app/views
-map <leader>gc :CtrlP app/controllers
-map <leader>gm :CtrlP app/models
-
-"use ctrl + k,j,h,l to navigate splits
-nmap <silent> <c-k> :wincmd k<CR>
-nmap <silent> <c-j> :wincmd j<CR>
-nmap <silent> <c-h> :wincmd h<CR>
-nmap <silent> <c-l> :wincmd l<CR>
-
-set winwidth=84
-" We have to have a winheight bigger than we want to set winminheight. But if
-" " we set winheight to be huge before winminheight, the winminheight set will
-" " fail.
-set winheight=5
-set winminheight=5
-set winheight=999
-
-
 function! RunTests(filename)
   " Write the file and run tests for the given filename
   :w
@@ -112,12 +117,3 @@ function! RunWip(...)
   :silent !echo;echo;echo;echo;echo
   exec ":!bundle exec rspec -t @wip"
 endfunction
-
-"run feature file
-map <leader>f :call RunWip()<cr>
-"run spec for current file
-map <leader>t :call RunTestFile()<cr>
-"run spec for what is under cursor
-map <leader>T :call RunNearestTest()<cr>
-"run spec for entire app
-map <leader>a :call RunTests('spec')<cr>
