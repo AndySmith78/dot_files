@@ -1,9 +1,11 @@
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function
-
+PS1='\u@\h:\w '
 alias tmx="TERM=screen-256color-bce tmx"
 alias vi="mvim -v"
 alias scr="screen"
-alias be='bundle exec'
+alias pj='ruby -rjson -rpp -e "pp JSON.parse(\$stdin.read)"'
+alias ll='ls -al'
+## git commands
 alias gst='git status'
 alias gl='git pull'
 alias gp='git push'
@@ -16,15 +18,14 @@ alias gb='git branch'
 alias gba='git branch -a'
 alias gch='git checkout'
 alias gchb='git checkout -b'
-alias nginx='sudo /usr/local/nginx/sbin/nginx'
-alias ber='bundle exec rspec'
-alias pj='ruby -rjson -rpp -e "pp JSON.parse(\$stdin.read)"'
+alias gap="git add -p"
+
+alias be='bundle exec'
 alias bi='bundle install'
 alias bers='bundle exec rails s'
 alias bec='bundle exec rails c'
 alias wipit='bundle exec rspec -t @wip'
-alias gap="git add -p"
-PS1='\u@\h:\w '
+
 export CC=gcc-4.2
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function
 

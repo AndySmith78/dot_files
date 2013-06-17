@@ -43,6 +43,8 @@ map <leader>v :view %%
 map <leader>gv :CtrlP app/views
 map <leader>gc :CtrlP app/controllers
 map <leader>gm :CtrlP app/models
+map <leader>gb :CtrlPBuffer
+map <leader>ga :CtrlPMixed
 "run feature file
 map <leader>f :call RunWip()<cr>
 "run spec for current file
