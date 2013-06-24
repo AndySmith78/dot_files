@@ -36,7 +36,7 @@ fi
 # Your previous /Users/andy/.bash_profile file was backed up as /Users/andy/.bash_profile.macports-saved_2012-01-02_at_16:41:56
 ##
 
-# MacPorts Installer addition on 2012-01-02_at_16:41:56: adding an appropriate PATH variable for use with MacPorts.
+PATH=/usr/local/share/npm/bin:/usr/local/share/python/:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 # Finished adapting your PATH environment variable for use with MacPorts.
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+PATH=$PATH:$HOME/.rvm/bin:/usr/local/share/npm/bin:/usr/local/share/python/:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
