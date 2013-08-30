@@ -8,6 +8,12 @@ syntax on
 filetype plugin indent on
 colorscheme grb256
 
+" Jump to last cursor position unless it's invalid or in an event handler
+autocmd BufReadPost *
+  \ if line("'\"") > 0 && line("'\"") <= line("$") |
+  \   exe "normal g`\"" |
+  \ endif
+
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 set hidden
 set number
@@ -59,6 +65,9 @@ nmap <silent> <c-j> :wincmd j<CR>
 nmap <silent> <c-h> :wincmd h<CR>
 nmap <silent> <c-l> :wincmd l<CR>
 
+"maps ctrl-l to input =>
+imap <c-l> <space>=><space>
+
 function HtmlEscape()
   silent s/&/\&amp;/eg
   silent s/</\&lt;/eg
@@ -78,6 +87,45 @@ function Align()
       call search(repeat('[^|]*|',column).'\s\{-\}'.repeat('.',position),'ce',line('.'))
     endif
 endfunction
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" PROMOTE VARIABLE TO RSPEC LET
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! PromoteToLet()
+  :normal! dd
+  " :exec '?^\s*it\>'
+  :normal! P
+  :.s/\(\w\+\) = \(.*\)$/let(:\1) { \2 }/
+  :normal ==
+endfunction
+:command! PromoteToLet :call PromoteToLet()
+:map <leader>p :PromoteToLet<cr>
+
+"renames file
+function! RenameFile()
+    let old_name = expand('%')
+    let new_name = input('New file name: ', expand('%'), 'file')
+    if new_name != '' && new_name != old_name
+        exec ':saveas ' . new_name
+        exec ':silent !rm ' . old_name
+        redraw!
+    endif
+endfunction
+map <leader>n :call RenameFile()<cr>
+
+"copy files
+function! CopyFile()
+    let old_name = expand('%')
+    let new_name = input('New file name: ', expand('%'), 'file')
+    if new_name != '' && new_name != old_name
+        exec ':saveas ' . new_name
+        redraw!
+    endif
+endfunction
+map <leader>c :call CopyFile()<cr>
+
+
+"Runs test within app
 function! RunTests(filename)
   " Write the file and run tests for the given filename
   :w
