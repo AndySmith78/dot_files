@@ -25,6 +25,7 @@ set mouse=n
 set guioptions-=T
 set t_Co=256
 set winwidth=84
+set backspace=2
 " We have to have a winheight bigger than we want to set winminheight. But if
 " " we set winheight to be huge before winminheight, the winminheight set will
 " " fail.

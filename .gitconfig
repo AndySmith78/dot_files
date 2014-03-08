@@ -4,7 +4,7 @@
 [github]
 	user = AndySmith78
 [core]
-	excludesfile = /Users/andy/.gitignore_global
+	excludesfile = /Users/asmith/.gitignore_global
 [color]
   ui = auto
 [alias]
