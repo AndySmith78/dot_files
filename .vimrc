@@ -43,7 +43,7 @@ set winheight=999
 "switch between last 2 files
 nnoremap <leader><leader> <c-^>
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
-
+nnoremap <C-n> :call NumberToggle()<cr>
 map <leader>e :edit %%
 map <leader>v :view %%
 "set ctrl p to search in certain folders
@@ -168,3 +168,12 @@ function! RunWip(...)
   :silent !echo;echo;echo;echo;echo
   exec ":!bundle exec rspec -t @wip"
 endfunction
+
+function! NumberToggle()
+  if(&relativenumber == 1)
+    set nornu
+  else
+    set relativenumber
+  endif
+endfunc
+
