@@ -4,17 +4,33 @@ if has("gui_running")
   set guioptions=egmrt
 endif
 
+
 syntax on
-filetype plugin indent on
 colorscheme grb256
 
+
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+"set rtp+=~/.vim/bundle/Vundle.vim
+"call vundle#begin()
+" " alternatively, pass a path where Vundle should install plugins
+" "call vundle#begin('~/some/path/here')
+"
+" " let Vundle manage Vundle, required
+" Plugin 'gmarik/Vundle.vim'
+" Plugin 'git@github.com:wting/rust.vim.git'
+"
+"call vundle#end()            " required
+filetype plugin indent on 
 " Jump to last cursor position unless it's invalid or in an event handler
 autocmd BufReadPost *
   \ if line("'\"") > 0 && line("'\"") <= line("$") |
   \   exe "normal g`\"" |
   \ endif
 
-set runtimepath^=~/.vim/bundle/ctrlp.vim
+set runtimepath^=~/.vim/bundles/ctrlp.vim
 set hidden
 set number
 set expandtab
@@ -60,6 +76,7 @@ map <leader>t :call RunTestFile()<cr>
 map <leader>T :call RunNearestTest()<cr>
 "run spec for entire app
 map <leader>a :call RunTests('spec')<cr>
+map <leader>r :call 
 "use ctrl + k,j,h,l to navigate splits
 nmap <silent> <c-k> :wincmd k<CR>
 nmap <silent> <c-j> :wincmd j<CR>

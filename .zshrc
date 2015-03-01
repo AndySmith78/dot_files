@@ -11,15 +11,6 @@ ZSH_THEME="mh"
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# Set to this to use case-sensitive completion
-# CASE_SENSITIVE="true"
-
-# Uncomment this to disable bi-weekly auto-update checks
-# DISABLE_AUTO_UPDATE="true"
-
-# Uncomment to change how often before auto-updates occur? (in days)
-# export UPDATE_ZSH_DAYS=13
-
 # Uncomment following line if you want to disable colors in ls
 # DISABLE_LS_COLORS="true"
 
@@ -40,23 +31,23 @@ COMPLETION_WAITING_DOTS="true"
 # Uncomment following line if you want to  shown in the command execution time stamp 
 # in the history command output. The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|
 # yyyy-mm-dd
-# HIST_STAMPS="mm/dd/yyyy"
+HIST_STAMPS="yyyy-mm-dd"
 
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git bundler andy tmux)
+plugins=(git bundler andy tmux command-aliases work)
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-export PATH="/usr/local/bin:/usr/local/sbin:~/bin:/opt/local/bin:/opt/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/Users/asmith/.rvm/bin:/usr/local/share/npm/bin:/usr/local/share/python/:/usr/sbin:/usr/bin:/sbin"
+export PATH=":/Users/asmith:/Users/asmith/bin:/usr/local/bin:/usr/local/sbin:~/Users/asmith/bin:/opt/local/bin:/opt/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/Users/asmith/.rvm/bin:/usr/local/share/npm/bin:/usr/local/share/python/:/usr/sbin:/usr/bin:/sbin:/usr/local/opt/coreutils/libexec/gnubin"
+#export MANPATH="/usr/local/opt/coreutils/libexec/gnuman"
 source /usr/local/share/chruby/chruby.sh
 chruby ruby-1.9.3
 
 export EDITOR='vim'
-
+autoload -U zmv
+alias zcp='zmu -C'
+alias zln='zmv -L'
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # # Preferred editor for local and remote sessions
@@ -71,4 +62,7 @@ export EDITOR='vim'
 
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
+#source "$HOME/.antigen/antigen.zsh"
 
+
+#antigen-apply
