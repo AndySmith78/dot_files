@@ -48,6 +48,7 @@ export EDITOR='vim'
 autoload -U zmv
 alias zcp='zmu -C'
 alias zln='zmv -L'
+alias -s html=vim
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # # Preferred editor for local and remote sessions
