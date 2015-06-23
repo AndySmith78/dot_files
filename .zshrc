@@ -5,7 +5,7 @@ ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="mh"
+ZSH_THEME="robbyrussell"
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
@@ -36,13 +36,12 @@ HIST_STAMPS="yyyy-mm-dd"
 plugins=(git bundler andy tmux command-aliases work)
 
 source $ZSH/oh-my-zsh.sh
-
 # User configuration
 
-export PATH=":/Users/asmith:/Users/asmith/bin:/usr/local/bin:/usr/local/sbin:~/Users/asmith/bin:/opt/local/bin:/opt/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/Users/asmith/.rvm/bin:/usr/local/share/npm/bin:/usr/local/share/python/:/usr/sbin:/usr/bin:/sbin:/usr/local/opt/coreutils/libexec/gnubin"
+export PATH=":/Users/asmith/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/sbin:/usr/local/opt/coreutils/libexec/gnubin"
 #export MANPATH="/usr/local/opt/coreutils/libexec/gnuman"
 source /usr/local/share/chruby/chruby.sh
-chruby ruby-1.9.3
+source /usr/local/share/chruby/auto.sh
 
 export EDITOR='vim'
 autoload -U zmv
