@@ -46,6 +46,9 @@ source /usr/local/share/chruby/auto.sh
 export EDITOR='vim'
 autoload -U zmv
 alias zcp='zmu -C'
+alias to='todo.sh'
+alias tol='todo.sh list'
+alias toa='todo.sh add'
 alias zln='zmv -L'
 alias -s html=vim
 # export MANPATH="/usr/local/man:$MANPATH"
