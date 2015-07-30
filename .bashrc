@@ -53,4 +53,5 @@ PROMPT_COMMAND=prompt
 PATH=$PATH:$HOME/.rvm/bin:/usr/local/share/npm/bin:/usr/local/share/python/:/usr/sbin:/usr/bin:/sbin
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 export PATH="/usr/local/bin:/usr/local/sbin:~/bin:$PATH"
-source /usr/local/opt/chruby/share/chruby/chruby.sh
+source /usr/local/share/chruby/chruby.sh
+source /usr/local/share/chruby/auto.sh
