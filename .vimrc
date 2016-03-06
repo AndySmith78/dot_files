@@ -1,28 +1,11 @@
 let mapleader = ','
 
-if has("gui_running")
-  set guioptions=egmrt
-endif
-
-
-syntax on
+syntax enable
 colorscheme grb256
-
 
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
-" set the runtime path to include Vundle and initialize
-"set rtp+=~/.vim/bundle/Vundle.vim
-"call vundle#begin()
-" " alternatively, pass a path where Vundle should install plugins
-" "call vundle#begin('~/some/path/here')
-"
-" " let Vundle manage Vundle, required
-" Plugin 'gmarik/Vundle.vim'
-" Plugin 'git@github.com:wting/rust.vim.git'
-"
-"call vundle#end()            " required
 filetype plugin indent on 
 " Jump to last cursor position unless it's invalid or in an event handler
 autocmd BufReadPost *
@@ -30,24 +13,33 @@ autocmd BufReadPost *
   \   exe "normal g`\"" |
   \ endif
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+" for ctrlp
 set runtimepath^=~/.vim/bundles/ctrlp.vim
+" Allows for the opening of a new file when open file has unsaved changes
 set hidden
+" displays line numbers
 set number
+" display information on current command
+set showcmd
+" use spaces instead of tabs
 set expandtab
 set tabstop=2
+" makes spaces feel like tabs
 set sts=2
+" spaces insert when indenting
 set shiftwidth=2
 set mouse=n
+set wildmenu
 set guioptions-=T
 set t_Co=256
 set winwidth=84
 set backspace=2
 " We have to have a winheight bigger than we want to set winminheight. But if
 " " we set winheight to be huge before winminheight, the winminheight set will
-" " fail.
-set winheight=5
-set winminheight=5
-set winheight=999
+" " fail.  This se
+"set winheight=8
+"set winminheight=8
+"set winheight=999
 
 :set wildignore+=vendor/**
 :set wildignore+=public/images
@@ -62,6 +54,7 @@ cnoremap %% <C-R>=expand('%:h').'/'<cr>
 nnoremap <C-n> :call NumberToggle()<cr>
 map <leader>e :edit %%
 map <leader>v :view %%
+noremap <leader>w :<CR>
 "set ctrl p to search in certain folders
 map <leader>gv :CtrlP app/views
 map <leader>gc :CtrlP app/controllers
@@ -84,27 +77,7 @@ nmap <silent> <c-h> :wincmd h<CR>
 nmap <silent> <c-l> :wincmd l<CR>
 
 "maps ctrl-l to input =>
-imap <c-l> <space>=><space>
-
-function HtmlEscape()
-  silent s/&/\&amp;/eg
-  silent s/</\&lt;/eg
-  silent s/>/\&gt;/eg
-  silent s/\'/\&apos;/eg
-  silent s/\’/\&apos;/eg
-  silent s/\"/\&quot;/eg
-endfunction
-
-function Align()
-  let p = '^\s*|\s.*\s|\s*$'
-    if exists(':Tabularize') && getline('.') =~# '^\s*|' && (getline(line('.')-1) =~# p || getline(line('.')+1) =~# p)
-      let column = strlen(substitute(getline('.')[0:col('.')],'[^|]','','g'))
-      let position = strlen(matchstr(getline('.')[0:col('.')],'.*|\s*\zs.*'))
-      Tabularize/|/l1
-      normal! 0
-      call search(repeat('[^|]*|',column).'\s\{-\}'.repeat('.',position),'ce',line('.'))
-    endif
-endfunction
+"imap <c-l> <space>=><space>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " PROMOTE VARIABLE TO RSPEC LET
@@ -148,7 +121,7 @@ function! RunTests(filename)
   " Write the file and run tests for the given filename
   :w
   :silent !echo;echo;echo;echo;echo
-  exec ":!bundle exec rspec " . a:filename
+  exec ":!chruby 1.9.3;bundle exec rspec " . a:filename
 endfunction
 
 function! SetTestFile()

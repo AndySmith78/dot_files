@@ -5,8 +5,9 @@ ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="robbyrussell"
-
+ZSH_THEME="smt"
+#smt
+# andysmith-mac 福 ~/.oh-my-zsh/themes ➤ 3ea3384|master✓
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
@@ -36,14 +37,19 @@ HIST_STAMPS="yyyy-mm-dd"
 plugins=(git bundler andy tmux command-aliases work)
 
 source $ZSH/oh-my-zsh.sh
+#Below line is for powerline configuration
+##########/usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
 # User configuration
 
-export PATH=":/Users/asmith/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/sbin:/usr/local/opt/coreutils/libexec/gnubin"
+export PATH=":/Users/asmith/bin:/usr/local/bin:/usr/local/Cellar:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/sbin:/usr/local/opt/coreutils/libexec/gnubin"
+export PATH=$PATH:"/Users/asmith/bin/gcc-arm-none-eabi-4_9-2014q4/bin"
 #export MANPATH="/usr/local/opt/coreutils/libexec/gnuman"
 source /usr/local/share/chruby/chruby.sh
 source /usr/local/share/chruby/auto.sh
 
 export EDITOR='vim'
+export GRADLE_OPTS="-XX:MaxPermSize=1G -XX:PermSize=1G"                         
+export JAVA_TOOL_OPTIONS="-XX:MaxPermSize=1G -XX:PermSize=1G"
 autoload -U zmv
 alias zcp='zmu -C'
 alias to='todo.sh'
