@@ -34,6 +34,7 @@ COMPLETION_WAITING_DOTS="true"
 # yyyy-mm-dd
 HIST_STAMPS="yyyy-mm-dd"
 
+DISABLE_AUTO_UPDATE=true
 plugins=(git bundler andy tmux command-aliases work)
 
 source $ZSH/oh-my-zsh.sh
@@ -75,3 +76,7 @@ alias -s html=vim
 
 
 #antigen-apply
+
+# Added by Dato Launcher v2.1.1
+export PATH="/Users/asmith/anaconda/bin:$PATH"
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"

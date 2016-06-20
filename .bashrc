@@ -51,7 +51,11 @@ $ "
 }
 PROMPT_COMMAND=prompt
 PATH=$PATH:$HOME/.rvm/bin:/usr/local/share/npm/bin:/usr/local/share/python/:/usr/sbin:/usr/bin:/sbin
+export PATH=$PATH:"/Users/asmith/bin/gcc-arm-none-eabi-5_2-2015q4/bin"
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 export PATH="/usr/local/bin:/usr/local/sbin:~/bin:$PATH"
 source /usr/local/share/chruby/chruby.sh
 source /usr/local/share/chruby/auto.sh
+wb() { 
+  curl -s https://whereboard.4moms.com | grep -A 10 $1 | sed 's|<[^>]*>||g' | sed '/^\s*$/d' | grep -v '^\s*$' 
+}

@@ -28,7 +28,7 @@ set tabstop=2
 set sts=2
 " spaces insert when indenting
 set shiftwidth=2
-set mouse=n
+set mouse=a
 set wildmenu
 set guioptions-=T
 set t_Co=256
